@@ -1,6 +1,8 @@
 # ImageProcessing
 SurveyingChangeInVegetationOverYears 🌱
 
+Measuring vegetation change caused by human development (urban and non-urban) using classic image processing." That covers deforestation, mining and housing, and also the pairs where vegetation goes up.
+
 Project is for module: IDSP-1701
 
 All Tu856 students
