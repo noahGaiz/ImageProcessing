@@ -2,6 +2,7 @@
 SurveyingChangeInVegetationOverYears 🌱
 
 Project is for module: IDSP-1701
+
 All Tu856 students
 
 Project contributors : Nojus Gaizauskas(C23391116) , Polina Tiukavkina(D22124948) , Heeyeon Yoon(D22127506)
