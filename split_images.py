@@ -6,7 +6,7 @@ size so they can be aligned in Step 1.
 """
 from pathlib import Path
 
-from PIL import Image
+import cv2
 
 SRC_DIR = Path(__file__).parent / "Images"
 OUT_DIR = Path(__file__).parent / "pairs"
@@ -30,6 +30,11 @@ def box_size(box):
     return (box[2] - box[0], box[3] - box[1])
 
 
+def crop(img, box):
+    left, top, right, bottom = box
+    return img[top:bottom, left:right].copy()
+
+
 def split_pair(name, filename, before_box, after_box):
     if box_size(before_box) != box_size(after_box):
         raise ValueError(f"{name}: before/after crop sizes differ")
@@ -38,10 +43,11 @@ def split_pair(name, filename, before_box, after_box):
         raise FileNotFoundError(src_path)
     out = OUT_DIR / name
     out.mkdir(parents=True, exist_ok=True)
-    with Image.open(src_path) as img:
-        rgb = img.convert("RGB")
-        rgb.crop(before_box).save(out / "before.png")
-        rgb.crop(after_box).save(out / "after.png")
+    img = cv2.imread(str(src_path))
+    if img is None:
+        raise ValueError(f"{name}: OpenCV could not read {src_path}")
+    cv2.imwrite(str(out / "before.png"), crop(img, before_box))
+    cv2.imwrite(str(out / "after.png"), crop(img, after_box))
 
 
 def main():
