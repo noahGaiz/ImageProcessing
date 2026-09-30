@@ -1,7 +1,7 @@
 Step 0: Setup (this week)
 
 [x] Crop each combined image into before.png and after.png, cutting out titles, logos and dividers
-[x] One folder per pair (01_amazon ... 10_arizona), or one folder with 01_before.png style names
+[x] One folder per pair (01 ... 10), or one folder with 01_before.png style names
 [ ] Add .gitignore with .venv/
 [ ] Push so everyone has the same images
 
