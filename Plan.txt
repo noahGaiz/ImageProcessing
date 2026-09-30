@@ -1,42 +1,42 @@
 Step 0: Setup (this week)
 
-Crop each combined image into before.png and after.png, cutting out titles, logos and dividers
-One folder per pair (01_amazon ... 10_arizona), or one folder with 01_before.png style names
-Add .gitignore with .venv/
-Push so everyone has the same images
+[x] Crop each combined image into before.png and after.png, cutting out titles, logos and dividers
+[x] One folder per pair (01_amazon ... 10_arizona), or one folder with 01_before.png style names
+[ ] Add .gitignore with .venv/
+[ ] Push so everyone has the same images
 
 Step 1: Align
 
-Resize before/after to the same size
-Fine-tune alignment with feature matching (ORB + homography)
-Check it worked by overlaying the two images
+[ ] Resize before/after to the same size
+[ ] Fine-tune alignment with feature matching (ORB + homography)
+[ ] Check it worked by overlaying the two images
 
 Step 2: Fix colour differences
 
-Match colours of "after" to "before" (histogram matching)
-Needed for pairs with different seasons or lighting (Australia, warehouse, Arizona)
+[ ] Match colours of "after" to "before" (histogram matching)
+[ ] Needed for pairs with different seasons or lighting (Australia, warehouse, Arizona)
 
 Step 3: Detect vegetation
 
 Try a few methods and compare:
-Green threshold in HSV colour space
-Green index (ExG = 2G − R − B) with automatic threshold (Otsu)
-Clean up the mask (remove small specks, fill small holes)
+[ ] Green threshold in HSV colour space
+[ ] Green index (ExG = 2G − R − B) with automatic threshold (Otsu)
+[ ] Clean up the mask (remove small specks, fill small holes)
 
 Step 4: Compare and measure
 
-Vegetation % before and after, and the difference
-Change map: red = lost, green = gained, grey = no change
-Real units (m²) where there's a scale bar
+[ ] Vegetation % before and after, and the difference
+[ ] Change map: red = lost, green = gained, grey = no change
+[ ] Real units (m²) where there's a scale bar
 
 Step 5: Check accuracy
 
-Hand-colour the vegetation on 3 or 4 image pairs (ground truth)
-Compare to your results, report an accuracy score
-Use this to pick the best detection method
+[ ] Hand-colour the vegetation on 3 or 4 image pairs (ground truth)
+[ ] Compare to your results, report an accuracy score
+[ ] Use this to pick the best detection method
 
 Step 6: Extras for depth (pick 1 or 2)
 
-Trees vs grass using texture
-Test how sensitive results are to small misalignment or threshold changes
-Compare results by category: deforestation vs mining vs urban vs hard cases
+[ ] Trees vs grass using texture
+[ ] Test how sensitive results are to small misalignment or threshold changes
+[ ] Compare results by category: deforestation vs mining vs urban vs hard cases
