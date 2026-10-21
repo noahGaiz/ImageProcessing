@@ -7,9 +7,9 @@ Step 0: Setup (this week)
 
 Step 1: Align
 
-[ ] Resize before/after to the same size
-[ ] Fine-tune alignment with feature matching (ORB + homography)
-[ ] Check it worked by overlaying the two images
+[x] Resize before/after to the same size
+[-] Fine-tune alignment with feature matching (ORB + homography)
+[x] Check it worked by overlaying the two images
 
 Step 2: Fix colour differences
 
