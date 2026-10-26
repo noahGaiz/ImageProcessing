@@ -34,7 +34,7 @@ Legend: ✅ matches code · ⚠️ partly matches / differs · 📝 research or 
 
 | Who | Blog says | Status |
 |---|---|---|
-| Nojus ([post](https://c23391116.wordpress.com/2026/10/21/week3-image-processing-project12-18th-october/)) | No time this week (FYP + individual project) | ✅ Honest, nothing to check |
+| Nojus ([post](https://c23391116.wordpress.com/2026/10/21/week3-image-processing-project12-18th-october/)) | *Post updated since first review.* Resized pairs to the same size, found it stretched the images, so went back to **cutting each image in half** (drops the edge-based divider). Wider image = side by side, taller = stacked. Keeps white borders (may hold dates/watermarks). Notes the risk if the two halves aren't equal | ✅ Matches `350eb3a` and `e9ed553`, although the commits are dated 21 Oct (Week 4 dates) |
 | Polina ([post](https://d22124948.wordpress.com/2026/10/20/project-week-3-12-19-october-research-on-what-rgb-range-do-we-use-to-detect-vegetation/)) | No fixed RGB range works; compares ExG, VARI, GLI; recommends **GLI + Otsu per image**, match brightness first | 📝 Not in code yet |
 | Heeyeon ([post](https://d22127506.wordpress.com/2026/10/19/image-processing-project-week3-12th-oct-18th-oct/)) | Defines vegetation as living green plants; edge-case table (shadows, water, green roofs); proposes `excess_green()` function | 📝 Not in code yet |
 
@@ -43,8 +43,8 @@ Legend: ✅ matches code · ⚠️ partly matches / differs · 📝 research or 
 ## Week 4 (19 – 25 Oct): code so far
 
 **Code:**
-- `350eb3a` (Nojus, 21 Oct): resize loop, `after` stretched to `before`'s size. **Since removed** by `e9ed553`.
-- `e9ed553` (Nojus, 21 Oct): **reverted edge-based splitting** (`find_divider` with Gaussian/Sobel/Canny is gone). Images are now cut exactly in half, so both halves are always the same size and no resize is needed. `Plan.txt` updated: resize [x], ORB alignment [-], overlay [x].
+- `350eb3a` (Nojus, 21 Oct, written up in his **Week 3** post): resize loop, `after` stretched to `before`'s size. **Since removed** by `e9ed553`.
+- `e9ed553` (Nojus, 21 Oct, written up in his **Week 3** post): **reverted edge-based splitting** (`find_divider` with Gaussian/Sobel/Canny is gone). Images are now cut exactly in half, so both halves are always the same size and no resize is needed. `Plan.txt` updated: resize [x], ORB alignment [-], overlay [x].
 - Heeyeon: **overlay check** cell, blends before/after 50/50 for every pair (sharp = aligned, ghosting = misaligned).
 - Polina: **Step 2 brightness/contrast matching in YUV** (only the Y channel changes, colour is kept). Two methods: Y histogram matching and Y mean/std matching (Reinhard). Saves `after_histmatched.png` and `after_meanstd.png` per pair, prints Y mean/std, and plots the images with Y histograms.
 
@@ -68,7 +68,12 @@ Observations:
 - As predicted in Polina's Week 2 research, matching the whole image can hide real change: in pairs 02 and 03 the cleared (bright) land gets darkened to fit the forested `before`. Pseudo-invariant features (match using unchanged areas only) would avoid this.
 - Splitting in half leaves strips of the other image in pair 03 `before` and pair 09 `after` (with axis text/labels), which will skew matching and vegetation %.
 
-Blogs not posted yet. Things to look for in Week 4 posts:
-- Nojus explains why edge-based splitting was dropped for a simple half cut (the Week 1 posts all describe the edge method).
+| Who | Blog says | Status |
+|---|---|---|
+| Nojus ([post](https://c23391116.wordpress.com/2026/10/25/week4-image-processing-project19th-25th-october/)) | Vegetation detection: RGB rule (G > R and G > B) and HSV (hue 35–85, S and V ≥ 40). Both miss the brown autumn trees in pair 06, so he adds an edge-density texture mask (grey → Gaussian → Canny → density per window → threshold → closing/opening). Compares RGB+edges vs HSV+edges; edge threshold 0.12–0.4 gives 42.6%–0.0% on pair 06, picks 0.15 (31.3%). Limitation: tested on one pair, bare soil also has texture | ❌ Not pushed: no detection cells in `origin/main` (checked 26 Oct). No references or next steps in the post |
+| Polina | Not posted yet | See [polina-blog-todo.md](polina-blog-todo.md) |
+| Heeyeon | Not posted yet | See [heeyeon-blog-todo.md](heeyeon-blog-todo.md) |
+
+Things to look for in the remaining Week 4 posts:
 - Heeyeon shows overlay results.
 - Polina shows the matching results and the "hides real change" limitation.

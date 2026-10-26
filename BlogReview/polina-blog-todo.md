@@ -21,8 +21,9 @@ Weeks 2 and 3 were research only. This post should show the research turned into
 - [ ] **Comparison:** both methods get very close to the before values. Histogram matching matches the whole shape of the histogram; mean/std only matches the average and spread, so it's gentler and the histogram shape stays the same.
 - [ ] **Limitation (important, links back to Week 2 research):** matching the whole image hides some real change. In pairs 02 and 03 the cleared, bright land gets darkened to fit the forested before image. This is exactly the drawback of histogram matching from my Week 2 sources.
 - [ ] **Other issue found:** the half cut leaves strips of the other image in pair 03 before and pair 09 after (with axis text), which affects the brightness stats.
-- [ ] **Team context (one line each):** Nojus switched splitting to a simple half cut for consistency; Heeyeon added the 50/50 overlay check. Matching runs on the half-cut pairs.
-- [ ] **Next week:** try pseudo-invariant features (calculate the correction from unchanged areas like roads/roofs only), then pick one matching method with the team before vegetation detection (GLI/ExG + Otsu from Week 3).
+- [ ] **Team context (one line each):** Nojus switched splitting to a simple half cut for consistency (his Week 3 post) and tried RGB/HSV + edge-texture detection (his Week 4 post); Heeyeon added the 50/50 overlay check. Matching runs on the half-cut pairs.
+- [ ] **Next week:** try pseudo-invariant features (calculate the correction from unchanged areas like roads/roofs only), then pick one matching method with the team before vegetation detection (my GLI + Otsu from Week 3, Heeyeon's ExG, or Nojus's RGB/HSV + edge texture from his Week 4 post).
+- [ ] **Link to Nojus's Week 4 (one line):** his colour thresholds missed the brown autumn trees in pair 06. Y-only matching keeps U/V unchanged, so it won't fix seasonal colour differences like that (and won't create fake ones either). That's why detection still needs something like his texture mask or an Otsu threshold per image.
 - [ ] **References:** Reinhard et al. 2001 (mean/std), plus the histogram matching sources from Week 2.
 
 ### Rubric boosts (see [rubric.md](rubric.md))

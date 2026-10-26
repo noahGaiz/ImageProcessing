@@ -9,8 +9,9 @@ Use it when putting together the final work, so the report, blogs and notebook a
 | [to-fix.md](to-fix.md) | Checklist of differences and loose ends to sort out before submitting |
 | [rubric.md](rubric.md) | Marking rubric, where we currently stand on each criterion, and what to do to reach "Expectations Exceeded" |
 | [polina-blog-todo.md](polina-blog-todo.md) | What Polina needs to add to her blog (Week 4 post + fixes to earlier posts) |
+| [heeyeon-blog-todo.md](heeyeon-blog-todo.md) | What Heeyeon needs to add to her blog (Week 4 post: overlay check) |
 
-Last reviewed: 21 Oct 2026 (all posts up to Week 3, code up to commit `e9ed553` plus Polina's YUV matching cells).
+Last reviewed: 26 Oct 2026 (all posts up to Week 3, Nojus's updated Week 3 and Week 4, code up to `origin/main` `01e9f5b` plus Polina's YUV matching cells).
 
 ## Blogs
 
