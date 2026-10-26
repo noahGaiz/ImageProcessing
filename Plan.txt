@@ -1,20 +1,21 @@
 Step 0: Setup (this week)
 
-[x] Crop each combined image into before.png and after.png, cutting out titles, logos and dividers
-[x] One folder per pair (01 ... 10), or one folder with 01_before.png style names
+[x] Cut each combined image exactly in half into before.png and after.png
+[ ] Crop or mask titles, dates, logos, scale bars and white gaps (still in the pairs, would count towards vegetation %)
+[x] One folder per pair (01 ... 08; 3 images dropped and 1 added on 26 Oct)
 [x] Add .gitignore with .venv/
 [x] Push so everyone has the same images
 
 Step 1: Align
 
-[x] Resize before/after to the same size
+[x] Before/after are the same size (the half cut guarantees it, so no resizing needed)
 [-] Fine-tune alignment with feature matching (ORB + homography)
 [x] Check it worked by overlaying the two images
 
 Step 2: Fix colour differences
 
-[ ] Match colours of "after" to "before" (histogram matching)
-[ ] Needed for pairs with different seasons or lighting (Australia, warehouse, Arizona)
+[-] Match brightness of "after" to "before" in YUV: Y histogram matching and Y mean/std matching done, team to pick one
+[ ] Needed for pairs with different seasons or lighting (Australia 05, warehouse 06)
 
 Step 3: Detect vegetation
 
@@ -39,4 +40,4 @@ Step 6: Extras for depth (pick 1 or 2)
 
 [ ] Trees vs grass using texture
 [ ] Test how sensitive results are to small misalignment or threshold changes
-[ ] Compare results by category: deforestation vs mining vs urban vs hard cases
+[ ] Compare results by category: deforestation vs urban vs hard cases
