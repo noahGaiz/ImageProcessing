@@ -4,9 +4,7 @@ Blog: https://d22127506.wordpress.com/
 
 ## Week 4 post (19 – 25 Oct): Checking alignment with a 50/50 overlay
 
-✅ Posted 27 Oct: https://d22127506.wordpress.com/2026/10/27/image-processing-project-week4-19th-oct-25th-oct/ (checked 26 Oct). Small things to check in the post: pair 04's labels are "2010"/"2025" (a summary of the post read "2015"), and the WordPress template footer ("123 Example Street") is still there.
-
-**Posted (26 Oct).** All items below are done. The image set changed to 8 images (`4c4e085`), so the post covers 8 pairs, not 10.
+**Posted (26 Oct):** [Week 4 post](https://d22127506.wordpress.com/2026/10/27/image-processing-project-week4-19th-oct-25th-oct/). All items below are done. Small things to check in the post: pair 04's labels are "2010"/"2025" (a summary of the post read "2015"), and the WordPress template footer ("123 Example Street") is still there. The image set changed to 8 images (`4c4e085`), so the post covers 8 pairs, not 10.
 
 Weeks 2 and 3 were research (resizing, then "what counts as vegetation"). Her code this week is the **overlay check** cell in `VegetationChange.ipynb`, which blends `before` and `after` 50/50 for every pair. This post should show that code and what it found.
 
