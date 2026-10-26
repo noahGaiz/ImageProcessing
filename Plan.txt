@@ -13,19 +13,19 @@ Step 1: Align
 
 Step 2: Fix colour differences
 
-[ ] Match colours of "after" to "before" (histogram matching)
-[ ] Needed for pairs with different seasons or lighting (Australia, warehouse, Arizona)
+[x] Match colours of "after" to "before" (histogram matching)
+[x] Needed for pairs with different seasons or lighting (Australia, warehouse, Arizona)
 
 Step 3: Detect vegetation
 
 Try a few methods and compare:
-[ ] Green threshold in HSV colour space
-[ ] Green index (ExG = 2G − R − B) with automatic threshold (Otsu)
-[ ] Clean up the mask (remove small specks, fill small holes)
+[x] Green threshold in HSV colour space
+[-] Green index (ExG = 2G − R − B) with automatic threshold (Otsu)
+[x] Clean up the mask (remove small specks, fill small holes)
 
 Step 4: Compare and measure
 
-[ ] Vegetation % before and after, and the difference
+[x] Vegetation % before and after, and the difference
 [ ] Change map: red = lost, green = gained, grey = no change
 [ ] Real units (m²) where there's a scale bar
 
