@@ -17,9 +17,9 @@ Weeks 2 and 3 were research only. This post should show the research turned into
 - [ ] **Figure:** screenshot of the plot cell for 2–3 pairs (before, after, hist matched, mean/std matched, Y histogram). Good examples:
   - Pair 02: big brightness difference, matching clearly fixes it.
   - Pair 10: after is darker/more contrasty, both methods bring it back.
-  - Pair 03: shows the limitation below.
+  - Pair 03: shows the limitation below (histogram matching blows the mine out to near white).
 - [ ] **Comparison:** both methods get very close to the before values. Histogram matching matches the whole shape of the histogram; mean/std only matches the average and spread, so it's gentler and the histogram shape stays the same.
-- [ ] **Limitation (important, links back to Week 2 research):** matching the whole image hides some real change. In pairs 02 and 03 the cleared, bright land gets darkened to fit the forested before image. This is exactly the drawback of histogram matching from my Week 2 sources.
+- [ ] **Limitation (important, links back to Week 2 research):** matching the whole image distorts the area that really changed, because the correction is calculated from the whole image, including the changed part. In pair 02 the bright cleared land gets darkened to fit the forested before image, so the change looks smaller. In pair 03 histogram matching does the opposite: the mine gets brighter (average Y 233 → 249) and turns almost white, while mean/std matching barely changes it. This is exactly the drawback of histogram matching from my Week 2 sources.
 - [ ] **Other issue found:** the half cut leaves strips of the other image in pair 03 before and pair 09 after (with axis text), which affects the brightness stats.
 - [ ] **Team context (one line each):** Nojus switched splitting to a simple half cut for consistency (his Week 3 post) and tried RGB/HSV + edge-texture detection (his Week 4 post); Heeyeon added the 50/50 overlay check. Matching runs on the half-cut pairs.
 - [ ] **Next week:** try pseudo-invariant features (calculate the correction from unchanged areas like roads/roofs only), then pick one matching method with the team before vegetation detection (my GLI + Otsu from Week 3, Heeyeon's ExG, or Nojus's RGB/HSV + edge texture from his Week 4 post).

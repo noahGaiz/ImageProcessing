@@ -10,7 +10,7 @@ Tick items off as they're resolved, and note who fixed it.
 - [ ] **Resizing timeline.** Heeyeon's Week 1 post says resizing was done; it was actually done by Nojus in Week 3 (his post; commit dated 21 Oct) and then removed. Clarify in the post or the report.
 - [ ] **Heeyeon's Week 2 resizing research** (`match_size`, interpolation comparison) is no longer used in code. Mention in the report why it's not needed now.
 - [ ] **Feature alignment** (Nojus, Week 2 plan): ORB/SIFT + homography: not implemented (marked [-] in `Plan.txt`). Overlay check done by Heeyeon.
-- [x] **Brightness/colour matching** (Polina, Week 2 plan): Y histogram matching and Y mean/std matching added. Still open: pick one, and test pseudo-invariant features (matching hides real change in pairs 02, 03).
+- [x] **Brightness/colour matching** (Polina, Week 2 plan): Y histogram matching and Y mean/std matching added. Still open: pick one, and test pseudo-invariant features (matching distorts real change: darkens cleared land in pair 02, blows the mine out to near white in pair 03).
 - [ ] **Vegetation detection** (Heeyeon `excess_green()`, Polina GLI + Otsu): not implemented yet.
 - [ ] **Nojus's Week 4 detection code** (RGB/HSV + edge-density texture, results for pair 06) is described in his blog but not pushed to GitHub. Push it so the blog and repo match, and run it on all 10 pairs, not just 06.
 

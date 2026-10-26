@@ -65,7 +65,7 @@ Polina's Y mean/std results (brightness / contrast):
 
 Observations:
 - Both methods bring `after` brightness/contrast close to `before` on all 10 pairs.
-- As predicted in Polina's Week 2 research, matching the whole image can hide real change: in pairs 02 and 03 the cleared (bright) land gets darkened to fit the forested `before`. Pseudo-invariant features (match using unchanged areas only) would avoid this.
+- As predicted in Polina's Week 2 research, matching the whole image distorts real change: in pair 02 the cleared (bright) land gets darkened to fit the forested `before`; in pair 03 histogram matching instead brightens the mine to near white (Y 233 → 249), mean/std barely changes it. Pseudo-invariant features (match using unchanged areas only) would avoid this.
 - Splitting in half leaves strips of the other image in pair 03 `before` and pair 09 `after` (with axis text/labels), which will skew matching and vegetation %.
 
 | Who | Blog says | Status |
