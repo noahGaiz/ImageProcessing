@@ -10,7 +10,6 @@ Tick items off as they're resolved, and note who fixed it.
 - [ ] **Printed dates, logos and scale bars** on pairs 01, 02, 04, 05, 07. Crop or mask before vegetation detection, or note as a limitation.
 - [ ] **Pair 08 may be swapped** (housing estate in the left half, open fields in the right). Check which half is really `before`; if swapped, detection will report vegetation gained instead of lost. The colour-only masks already show a gain on 08 (RGB 21.7% → 32.3%), which fits a swap.
 - [x] **Resizing timeline.** Heeyeon's Week 1 post says resizing was done; it was actually done by Nojus in Week 3 (his post; commit dated 21 Oct) and then removed. Clarify in the post or the report. Heeyeon: Update note added to Week 1, correction in Week 4.
-- [ ] **Heeyeon's Week 2 resizing research** (`match_size`, interpolation comparison) is no longer used in code. Mention in the report why it's not needed now. Explained in Heeyeon's Week 4 post ("Resizing" paragraph). Still open: copy it into the report.
 - [ ] **Feature alignment** (Nojus, Week 2 plan): ORB/SIFT + homography: not implemented (marked [-] in `Plan.txt`). Overlay check done by Heeyeon, plus a phase correlation shift measurement (`198c62e`): only pair 06 is clearly shifted (~10 px vertical).
 - [x] **Brightness/colour matching** (Polina, Week 2 plan): Y histogram matching and Y mean/std matching added. Still open: pick one (Nojus's detection already reads `after_meanstd.png`, so mean/std is the de facto choice; team to confirm), and test pseudo-invariant features (matching distorts real change: darkens cleared land in pair 02 and the new construction in pair 04).
 - [ ] **Vegetation detection.** Nojus's RGB/HSV + edge-density texture is now in the notebook (`716b259`, run on all 8 pairs). Heeyeon's `excess_green()` and Polina's GLI + Otsu are not implemented yet.
@@ -25,6 +24,10 @@ Tick items off as they're resolved, and note who fixed it.
   - Nojus (Week 2, tried in Week 4): RGB / HSV thresholds + edge-density texture
 - [ ] **Agree the vegetation definition** (Heeyeon proposed "living green plants", Week 3).
 - [x] ~~**Decide what to do with pairs 03, 09, 10** (big size differences): fix divider, crop, or align.~~ Dropped from the image set in `4c4e085` (26 Oct); `image.jpg` added, 8 pairs now. Everyone's Week 4 post should say so.
+
+## Future work (final report)
+
+- [ ] **Heeyeon's Week 2 resizing research** (`match_size`, interpolation comparison) is no longer used in code, because the half cut always gives equal-sized halves. Already explained in Heeyeon's Week 4 post ("Resizing" paragraph). For the report: say why it isn't needed now, and that it would be needed if we split at a divider again or add images from other sources.
 
 ## Blog references
 
