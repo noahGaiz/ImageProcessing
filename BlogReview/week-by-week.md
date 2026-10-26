@@ -47,32 +47,42 @@ Legend: ✅ matches code · ⚠️ partly matches / differs · 📝 research or 
 - `e9ed553` (Nojus, 21 Oct, written up in his **Week 3** post): **reverted edge-based splitting** (`find_divider` with Gaussian/Sobel/Canny is gone). Images are now cut exactly in half, so both halves are always the same size and no resize is needed. `Plan.txt` updated: resize [x], ORB alignment [-], overlay [x].
 - Heeyeon: **overlay check** cell, blends before/after 50/50 for every pair (sharp = aligned, ghosting = misaligned).
 - Polina: **Step 2 brightness/contrast matching in YUV** (only the Y channel changes, colour is kept). Two methods: Y histogram matching and Y mean/std matching (Reinhard). Saves `after_histmatched.png` and `after_meanstd.png` per pair, prints Y mean/std, and plots the images with Y histograms.
+- `198c62e` (Heeyeon, 26 Oct): **phase correlation shift check** after the overlay (dx, dy, response per pair); fixes the overlay comment.
+- `9f21754` (Heeyeon, 26 Oct): **restores the split loop** that `01e9f5b` had deleted (a fresh clone crashed without it) and reads from the repo `Images/`/`pairs/`. Output is pixel-identical to the existing pairs.
+- `8343ee2` (Polina, 26 Oct): `Plan.txt` brought in line with the code.
+- `4c4e085` (Polina, 26 Oct): **new image set**. Dropped `Forest.jpg`, `Image6.jpeg`, `NY.jpeg` (old pairs 03, 09, 10: the big size differences and the strips/labels left by the half cut), added `image.jpg` (2010 → 2025 farmland to housing). **8 pairs now**, and numbering shifted: old 04 (`Image.jpeg`) is now 03, new image is 04, 05–08 unchanged. Categories: forest loss (01, 02), urban sprawl (03, 04, 05, 07, 08), data centre (06); no mining pair any more.
 
-Polina's Y mean/std results (brightness / contrast):
+Polina's Y mean/std results on the 8 new pairs (brightness / contrast, rerun 26 Oct):
 
 | Pair | before | after | hist matched | mean/std matched |
 |---|---|---|---|---|
 | 01 | 99.9 / 47.2 | 105.8 / 53.4 | 99.3 / 47.4 | 99.4 / 47.2 |
 | 02 | 108.7 / 22.4 | 155.5 / 49.0 | 108.0 / 22.5 | 108.2 / 22.4 |
-| 03 | 89.1 / 71.5 | 92.4 / 66.9 | 88.5 / 71.3 | 87.8 / 69.4 |
-| 04 | 128.8 / 46.1 | 129.4 / 60.6 | 128.3 / 46.2 | 128.3 / 46.1 |
+| 03 | 128.8 / 46.1 | 129.4 / 60.6 | 128.3 / 46.2 | 128.3 / 46.1 |
+| 04 | 87.1 / 36.5 | 98.5 / 48.9 | 86.5 / 36.6 | 86.6 / 36.5 |
 | 05 | 142.9 / 42.1 | 125.1 / 39.8 | 142.4 / 41.9 | 142.3 / 41.9 |
 | 06 | 108.2 / 39.0 | 108.6 / 56.0 | 107.8 / 39.6 | 107.7 / 39.0 |
 | 07 | 77.1 / 39.3 | 102.6 / 50.7 | 76.7 / 39.7 | 76.7 / 39.2 |
 | 08 | 119.2 / 54.6 | 109.2 / 47.2 | 118.8 / 54.5 | 118.2 / 52.9 |
-| 09 | 128.1 / 87.6 | 115.7 / 82.2 | 127.2 / 86.8 | 123.2 / 80.2 |
-| 10 | 177.3 / 36.1 | 139.4 / 56.7 | 177.5 / 33.6 | 176.8 / 36.2 |
+
+Heeyeon's phase correlation on the 8 new pairs (rerun 26 Oct): dx, dy in px, response 0–1. Only 05 (0.47) and 08 (0.33) have a response high enough to trust; 06 (+9.8 px vertical) agrees with the ghosting seen in the overlay.
+
+| Pair | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 |
+|---|---|---|---|---|---|---|---|---|
+| dx, dy | −4.1, −1.3 | +6.3, −3.6 | −14.6, −1.2 | −2.8, +1.7 | −0.4, −2.1 | +0.4, +9.8 | −11.1, +54.6 | −2.2, −0.2 |
+| response | 0.08 | 0.04 | 0.07 | 0.05 | 0.47 | 0.11 | −0.00 | 0.33 |
 
 Observations:
-- Both methods bring `after` brightness/contrast close to `before` on all 10 pairs.
-- As predicted in Polina's Week 2 research, matching the whole image distorts real change: in pair 02 the cleared (bright) land gets darkened to fit the forested `before`; in pair 03 histogram matching instead brightens the mine to near white (Y 233 → 249), mean/std barely changes it. Pseudo-invariant features (match using unchanged areas only) would avoid this.
-- Splitting in half leaves strips of the other image in pair 03 `before` and pair 09 `after` (with axis text/labels), which will skew matching and vegetation %.
+- Both methods bring `after` brightness/contrast close to `before` on all 8 pairs. Mean/std is slightly off on pair 08 because 3.5% of its pixels are clipped to 0–255 (0.6% on 05, none elsewhere); unclipped it matches exactly.
+- As predicted in Polina's Week 2 research, matching the whole image distorts real change: in pair 02 the cleared (bright) land gets darkened to fit the forested `before` (bright pixels Y ≈ 206 → 125–131), and in pair 04 the construction sites get darkened towards the 2010 fields (Y ≈ 202 → 163), with both methods. Pseudo-invariant features (match using unchanged areas only) would avoid this.
+- The half-cut strips from old pairs 03 and 09 are gone with those images. Dates, logos and scale bars are still printed on 01, 02, 04, 05, 07 and will skew matching and vegetation % unless masked.
+- Pair 08 may have before/after swapped (housing estate on the left, open fields on the right). Check before running detection.
 
 | Who | Blog says | Status |
 |---|---|---|
 | Nojus ([post](https://c23391116.wordpress.com/2026/10/25/week4-image-processing-project19th-25th-october/)) | Vegetation detection: RGB rule (G > R and G > B) and HSV (hue 35–85, S and V ≥ 40). Both miss the brown autumn trees in pair 06, so he adds an edge-density texture mask (grey → Gaussian → Canny → density per window → threshold → closing/opening). Compares RGB+edges vs HSV+edges; edge threshold 0.12–0.4 gives 42.6%–0.0% on pair 06, picks 0.15 (31.3%). Limitation: tested on one pair, bare soil also has texture | ❌ Not pushed: no detection cells in `origin/main` (checked 26 Oct). No references or next steps in the post |
-| Polina | Not posted yet | See [polina-blog-todo.md](polina-blog-todo.md) |
-| Heeyeon | Not posted yet | See [heeyeon-blog-todo.md](heeyeon-blog-todo.md) |
+| Polina | Not posted yet (draft updated for the 8-pair set) | See [polina-blog-todo.md](polina-blog-todo.md) |
+| Heeyeon | Not posted yet | See [heeyeon-blog-todo.md](heeyeon-blog-todo.md); overlay notes need redoing for the 8-pair set |
 
 Things to look for in the remaining Week 4 posts:
 - Heeyeon shows overlay results.
