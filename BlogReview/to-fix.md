@@ -5,7 +5,6 @@ Tick items off as they're resolved, and note who fixed it.
 ## Code vs blog differences
 
 - [x] ~~**Resize method.**~~ No longer applies: `e9ed553` cuts images exactly in half, so halves are always the same size and the resize code was removed.
-- [ ] **Splitting method changed.** All Week 1 posts describe the edge-based `find_divider` (Gaussian/Sobel/Canny), but `e9ed553` replaced it with a half cut. Nojus explains it in his Week 3 post; Polina and Heeyeon should link to it in their Week 4 posts, and the report should explain it. Heeyeon: done (Week 4 post links Nojus's Week 3). Polina: done (Week 4 post explains the switch to the centre cut). Still open: report.
 - [x] ~~**Half cut leaves strips** of the other image in pair 03 `before` and pair 09 `after` (axis text too).~~ Resolved by `4c4e085`: those images were dropped from the set (26 Oct). In the new set, thin strips of the other half remain on the right edge of pairs 03 and 08 (noted as a limitation in Heeyeon's Week 4 post).
 - [ ] **Printed dates, logos and scale bars** on pairs 01, 02, 04, 05, 07. Crop or mask before vegetation detection, or note as a limitation.
 - [ ] **Pair 08 may be swapped** (housing estate in the left half, open fields in the right). Check which half is really `before`; if swapped, detection will report vegetation gained instead of lost. The colour-only masks already show a gain on 08 (RGB 21.7% → 32.3%), which fits a swap.
@@ -27,6 +26,7 @@ Tick items off as they're resolved, and note who fixed it.
 
 ## Future work (final report)
 
+- [ ] **Splitting method changed.** All Week 1 posts describe the edge-based `find_divider` (Gaussian/Sobel/Canny), but `e9ed553` replaced it with a half cut. Already explained in the blogs: Nojus's Week 3 post, Heeyeon's Week 4 (links Nojus's Week 3) and Polina's Week 4. For the report: explain the switch and why (edge-based halves differed in size, resizing stretched the images).
 - [ ] **Heeyeon's Week 2 resizing research** (`match_size`, interpolation comparison) is no longer used in code, because the half cut always gives equal-sized halves. Already explained in Heeyeon's Week 4 post ("Resizing" paragraph). For the report: say why it isn't needed now, and that it would be needed if we split at a divider again or add images from other sources.
 
 ## Blog references
