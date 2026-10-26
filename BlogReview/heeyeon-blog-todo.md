@@ -18,7 +18,7 @@ Weeks 2 and 3 were research (resizing, then "what counts as vegetation"). Her co
   - Add one line on Week 2: her `match_size` research isn't used now, but it would be needed if we ever go back to splitting at the divider or add images from other sources.
 - [ ] **Why an overlay check:** if the two images are shifted even a few pixels, a road or roof edge in `before` lands on grass in `after`, and it shows up as fake vegetation change. This is the same "false change" point from her Week 3 post.
 - [ ] **Method + code snippet:** `cv2.addWeighted(before, 0.5, after, 0.5, 0)`. Each output pixel = half of each image. Things that didn't move look **sharp**; things that are shifted show **double edges / ghosting**. Mention the BGR→RGB conversion for matplotlib. Paste only the loop, not the whole notebook. Small fix before screenshotting: the cell's first comment still says `after_resized`, but the code now blends `after.png` (resizing was removed), so change it to `after`.
-- [ ] **Results table (all 10 pairs).** Fill in after zooming in on each overlay in the notebook. What a quick look at the centre of each overlay shows:
+- [ ] **Results table (all 10 pairs).** ⚠️ **Not confirmed yet.** The rows below come from a quick look at one crop from the middle of each overlay (not the whole image), and the "~10 px" for pair 06 is a rough automatic estimate. Before posting, open the overlay output in the notebook, zoom into each pair and look along roads and building edges: one sharp line = aligned, two faint lines = shifted. Correct any row that's wrong and fill in 02, 05, 07, 08.
 
   | Pair | Overlay result | Notes |
   |---|---|---|
