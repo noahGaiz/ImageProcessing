@@ -14,8 +14,8 @@ Step 1: Align
 
 Step 2: Fix colour differences
 
-[x] Match colours of "after" to "before" (histogram matching)
-[x] Needed for pairs with different seasons or lighting (Australia, warehouse, Arizona)
+[-] Match brightness of "after" to "before" in YUV: Y histogram matching and Y mean/std matching done; detection currently uses the mean/std output (after_meanstd.png), team to confirm
+[ ] Needed for pairs with different seasons or lighting (Australia 05, warehouse 06)
 
 Step 3: Detect vegetation
 
