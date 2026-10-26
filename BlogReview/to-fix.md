@@ -5,11 +5,11 @@ Tick items off as they're resolved, and note who fixed it.
 ## Code vs blog differences
 
 - [x] ~~**Resize method.**~~ No longer applies: `e9ed553` cuts images exactly in half, so halves are always the same size and the resize code was removed.
-- [ ] **Splitting method changed.** All Week 1 posts describe the edge-based `find_divider` (Gaussian/Sobel/Canny), but `e9ed553` replaced it with a half cut. Nojus explains it in his Week 3 post; Polina and Heeyeon should link to it in their Week 4 posts, and the report should explain it.
-- [ ] **Half cut leaves strips** of the other image in pair 03 `before` and pair 09 `after` (axis text too). Crop these before vegetation detection, or note as a limitation.
-- [ ] **Resizing timeline.** Heeyeon's Week 1 post says resizing was done; it was actually done by Nojus in Week 3 (his post; commit dated 21 Oct) and then removed. Clarify in the post or the report.
-- [ ] **Heeyeon's Week 2 resizing research** (`match_size`, interpolation comparison) is no longer used in code. Mention in the report why it's not needed now.
-- [ ] **Feature alignment** (Nojus, Week 2 plan): ORB/SIFT + homography: not implemented (marked [-] in `Plan.txt`). Overlay check done by Heeyeon.
+- [ ] **Splitting method changed.** All Week 1 posts describe the edge-based `find_divider` (Gaussian/Sobel/Canny), but `e9ed553` replaced it with a half cut. Nojus explains it in his Week 3 post; Polina and Heeyeon should link to it in their Week 4 posts, and the report should explain it. Heeyeon: done (Week 4 post links Nojus's Week 3). Still open: Polina's Week 4 post, report.
+- [x] **Half cut leaves strips** of the other image in pair 03 `before` and pair 09 `after` (axis text too). Crop these before vegetation detection, or note as a limitation. Noted as a limitation in Heeyeon's Week 4 post. With the new 8-image set (`4c4e085`) the strips are in pairs 03 and 08; Image6 (old 09) was removed.
+- [x] **Resizing timeline.** Heeyeon's Week 1 post says resizing was done; it was actually done by Nojus in Week 3 (his post; commit dated 21 Oct) and then removed. Clarify in the post or the report. Heeyeon: Update note added to Week 1, correction in Week 4.
+- [ ] **Heeyeon's Week 2 resizing research** (`match_size`, interpolation comparison) is no longer used in code. Mention in the report why it's not needed now. Explained in Heeyeon's Week 4 post ("Resizing" paragraph). Still open: copy it into the report.
+- [ ] **Feature alignment** (Nojus, Week 2 plan): ORB/SIFT + homography: not implemented (marked [-] in `Plan.txt`). Overlay check done by Heeyeon, plus a phase correlation shift measurement (`198c62e`): only pair 06 is clearly shifted (~10 px vertical).
 - [x] **Brightness/colour matching** (Polina, Week 2 plan): Y histogram matching and Y mean/std matching added. Still open: pick one, and test pseudo-invariant features (matching distorts real change: darkens cleared land in pair 02, blows the mine out to near white in pair 03).
 - [ ] **Vegetation detection** (Heeyeon `excess_green()`, Polina GLI + Otsu): not implemented yet.
 - [ ] **Nojus's Week 4 detection code** (RGB/HSV + edge-density texture, results for pair 06) is described in his blog but not pushed to GitHub. Push it so the blog and repo match, and run it on all 10 pairs, not just 06.
@@ -21,7 +21,7 @@ Tick items off as they're resolved, and note who fixed it.
   - Polina (Week 3): GLI + Otsu
   - Nojus (Week 2, tried in Week 4): RGB / HSV thresholds + edge-density texture
 - [ ] **Agree the vegetation definition** (Heeyeon proposed "living green plants", Week 3).
-- [ ] **Decide what to do with pairs 03, 09, 10** (big size differences): fix divider, crop, or align.
+- [x] **Decide what to do with pairs 03, 09, 10** (big size differences): fix divider, crop, or align. Resolved by replacing the image set: Forest, Image6 and NY were removed in `4c4e085`.
 
 ## Blog references
 
@@ -32,4 +32,5 @@ Tick items off as they're resolved, and note who fixed it.
 
 - [x] Update `Plan.txt` checkboxes for Step 1 (done by Nojus in `e9ed553`).
 - [ ] Tick Step 2 "Match colours of after to before" in `Plan.txt` once the team agrees on the matching method.
-- [ ] Check `9dd6536` `.gitignore` change: make sure images/`pairs/` aren't committed by accident.
+- [x] Check `9dd6536` `.gitignore` change: make sure images/`pairs/` aren't committed by accident. Checked: `Images/` is now committed on purpose (`1cdcd6c`, `4c4e085`), and `pairs/` is still ignored.
+- [x] Notebook read images from `../Images` (outside the repo) and never called `split_image()`. Fixed by Heeyeon in `9f21754`.
