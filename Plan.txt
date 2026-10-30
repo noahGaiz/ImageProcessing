@@ -21,13 +21,13 @@ Step 3: Detect vegetation
 
 Try a few methods and compare:
 [x] Green threshold in HSV colour space
-[-] Green index (ExG = 2G − R − B) with automatic threshold (Otsu)
+[x] Green index (ExG = 2G − R − B) with automatic threshold (Otsu)
 [x] Clean up the mask (remove small specks, fill small holes)
 
 Step 4: Compare and measure
 
 [x] Vegetation % before and after, and the difference
-[ ] Change map: red = lost, green = gained, grey = no change
+[x] Change map: red = lost, green = gained, grey = no change
 [ ] Real units (m²) where there's a scale bar
 
 Step 5: Check accuracy
@@ -38,6 +38,6 @@ Step 5: Check accuracy
 
 Step 6: Extras for depth (pick 1 or 2)
 
-[ ] Trees vs grass using texture
+[x] Trees vs grass using texture
 [ ] Test how sensitive results are to small misalignment or threshold changes
 [ ] Compare results by category: deforestation vs urban vs hard cases
