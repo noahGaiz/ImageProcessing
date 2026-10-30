@@ -10,6 +10,7 @@ Use it when putting together the final work, so the report, blogs and notebook a
 | [rubric.md](rubric.md) | Marking rubric, where we currently stand on each criterion, and what to do to reach "Expectations Exceeded" |
 | [polina-blog-todo.md](polina-blog-todo.md) | What Polina needs to add to her blog (Week 4 post + fixes to earlier posts) |
 | [heeyeon-blog-todo.md](heeyeon-blog-todo.md) | What Heeyeon needs to add to her blog (Week 4 post: overlay check) |
+| [next-cells-split.md](next-cells-split.md) | How Heeyeon and Polina could split the hand-check and bar graph cells, and what Heeyeon should change in her next post |
 
 Last reviewed: 26 Oct 2026 (all posts up to Week 3, Nojus's updated Week 3 and Week 4, code up to `origin/main` `8343ee2`: Heeyeon's phase correlation check and split-loop fix, the new 8-pair image set, updated `Plan.txt`).
 
