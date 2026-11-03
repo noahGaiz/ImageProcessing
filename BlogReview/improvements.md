@@ -18,16 +18,26 @@ Starting point (current code, 1 Nov):
 ## Done
 
 - [x] **Pair 08 swap** (Polina). The left half of `Image5.jpeg` is the newer photo: there's a construction site next to the estate, and the estate covers fields that are still there in the right half. `SWAPPED = {"Image5.jpeg"}` in the paths cell, and `split_image` swaps the halves for files in that set. Notebook rerun: pair 08 is now vegetation **loss** (RGB + edges 51.6% → 36.3%, HSV + edges 81.1% → 74.9%). Pairs 01–07 are unchanged. The 08 boxes in `accuracy/labels.py` are swapped to match, so the accuracy numbers stay the same.
-- [ ] **Accuracy boxes and scoring** (Polina). `accuracy/` folder: 62 boxes on all 8 pairs, score script, box pictures. _Status: ready, not pushed. Team to check the boxes in `accuracy/boxes/`._
+- [x] **Accuracy boxes and scoring** (Polina, `25737c7`). `accuracy/` folder: 62 boxes on all 8 pairs, score script, box pictures. Team to check the boxes in `accuracy/boxes/`.
 
 ## This week
 
 ### Polina
 
-- [ ] **Bar graph cell** (Nojus's cell 18): all 8 pairs grouped by category (forest loss / urban sprawl / data centre), both methods.
-- [ ] **Water check**: a function that removes water from the vegetation mask, e.g. green but very low GLI, or green but smooth (few edges) and dark.
-  - Measure on the water boxes. Now (RGB / HSV): pair 07 lake 18 / 7 (before) and 9 / 1 (after), pair 05 pond 94 / 67 and 37 / 26, pair 06 pond 48 / 41.
-  - Check that the forest boxes don't drop. Forest is dark too.
+- [x] **Bar graph cell** (last cell, was Nojus's cell 18): all 8 pairs grouped by category (forest loss / urban sprawl / data centre), one graph per method, with the change written above each pair. Uses the methods with the water check.
+- [x] **Water check** (new cells after the detection functions). `water_mask(img)`: water is **smooth** (brightness spread under 6 in a 9×9 window), **blue-green** (hue 60–110) and **not dark** (brightness at least 60). `without_water(method)` wraps any method, giving `vegetation_rgb_texture_nowater` and `vegetation_hsv_texture_nowater`. A second cell shows what's removed (magenta) and the accuracy before → after.
+  - GLI alone didn't work: the pair 07 lake has the same GLI as the forest (about 0.2). It's the smoothness and colour that differ.
+  - The brightness limit is there because without it the shaded pair 07 forest also counted as water (forest boxes dropped about 8 points). With it, no vegetation box drops.
+
+  | Method | Overall | Vegetation | Not vegetation | Water boxes |
+  |---|---|---|---|---|
+  | RGB + edges | 75.7% → **77.3%** | 64.3% → 64.3% | 85.0% → **87.9%** | 41.0% → **60.5%** |
+  | HSV + edges | 73.4% → **75.0%** | 77.8% → 77.8% | 69.8% → **72.8%** | 28.5% → **48.7%** |
+
+  - Pair 07 lake: RGB 18 → 68% (before) and 9 → 52% (after); HSV 7 → 57% and 1 → 45%.
+  - Still not fixed: the pair 05 pond (small and green, close to its banks) and most of the pair 06 pond.
+  - The vegetation % per pair barely changes (at most 0.4% of an image is removed), so the change map and graph look almost the same; the fix is in *what* gets counted.
+  - Limitation: the thresholds were picked using the same boxes they're scored on, so the gain may be a bit optimistic. New boxes would be a fairer test.
 - [ ] Blog: what you changed, accuracy before → after, and the pair 08 fix (one line).
 
 ### Heeyeon

@@ -61,6 +61,19 @@ Per pair (average of that pair's boxes):
 - **RGB misses grass and forest.** Pair 04 after green field **3** / 100, pair 03 park 52 / 90, pair 05 forest 36–66 / 77–90.
 - **Black date labels, pair 01: 72–76 / 82–85.** Some very dark pixels count as vegetation.
 
+## After improvements
+
+| Improvement | Method | Overall | Vegetation | Not vegetation | Notes |
+|---|---|---|---|---|---|
+| Water check (Polina, `water_mask`) | RGB + edges | 75.7% → 77.3% | 64.3% → 64.3% | 85.0% → 87.9% | Water boxes 41.0% → 60.5% |
+| | HSV + edges | 73.4% → 75.0% | 77.8% → 77.8% | 69.8% → 72.8% | Water boxes 28.5% → 48.7% |
+| Speckle clean-up (Heeyeon, `clean_mask`) | RGB + edges | 75.7% → 76.0% | 64.3% → 64.3% | 85.0% → 85.7% | No box worse |
+| | HSV + edges | 73.4% → 74.4% | 77.8% → 78.7% | 69.8% → 70.8% | Pair 03 trees 11–13% → 7–9% |
+| Both: water removed, then `clean_mask` | RGB + edges | 75.7% → **77.6%** | 64.3% → 64.3% | 85.0% → 88.6% | |
+| | HSV + edges | 73.4% → **76.0%** | 77.8% → 78.7% | 69.8% → 73.8% | |
+
+The water thresholds were tuned on these same boxes, so treat that gain as a slightly optimistic estimate. "Both" was checked outside the notebook with `clean_mask(method(img) & ~water_mask(img))`; there's no notebook function for it yet.
+
 ## Before vs after improvements
 
 To show an improvement helped, keep these boxes the same and score both versions:
