@@ -32,8 +32,8 @@ Starting point (current code, 1 Nov):
 
 ### Heeyeon
 
-- [ ] **Hand-check cell** (Nojus's cell 17): show all categories, and point out the failures (brown trees in 06, lake in 07, building site in 05).
-- [ ] **Speckle clean-up**: a function `clean_mask(mask)` that removes tiny blobs and fills tiny holes (morphological opening and closing).
+- [x] **Hand-check cell** (Nojus's cell 17): show all categories, and point out the failures (brown trees in 06, lake in 07, building site in 05). Heeyeon: pairs 02 (forest loss), 03, 05, 07 (urban sprawl) and 06 (data centre); yellow boxes on the failures with % right for each method.
+- [x] **Speckle clean-up**: a function `clean_mask(mask)` that removes tiny blobs and fills tiny holes (morphological opening and closing). Heeyeon: `clean_mask` removes blobs and fills holes under 25 px by blob size, because 5x5 opening/closing cut the pair 05 forest (36% → 23%) and the pair 03 trees (11–13% → 0–4%). RGB + edges 75.7% → 76.0% (no box worse), HSV + edges 73.4% → 74.4% (03 trees 11–13% → 7–9%, 05 pond 26% → 20%). Change-map blobs drop 3–6x (pair 03: 5894 → 1002), vegetation % changes by 3 points or less. Pair 08 hedges kept. New functions `vegetation_rgb_texture_clean` / `vegetation_hsv_texture_clean` for Nojus's cells.
   - Measure: overall accuracy before → after for both methods, plus how the change maps look.
   - Check that single trees don't disappear (pair 03 trees, pair 08 hedges).
 - [ ] Blog: what you changed and accuracy before → after.
