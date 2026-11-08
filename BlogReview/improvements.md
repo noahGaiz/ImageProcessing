@@ -64,7 +64,7 @@ Nojus: accuracy write-up. He can use `accuracy/`, check the boxes and add his ow
 
 ### Heeyeon
 
-- [ ] **Align the images**: shift by the measured dx, dy where the response is high (05, 08), and fix pair 06 (about 10 px vertical). Accuracy boxes won't show this, because they're scored on each image separately. Show it in the change maps instead: fewer thin red and green lines along roads and building edges.
+- [x] **Align the images**: shift by the measured dx, dy where the response is high (05, 08), and fix pair 06 (about 10 px vertical). Accuracy boxes won't show this, because they're scored on each image separately. Show it in the change maps instead: fewer thin red and green lines along roads and building edges. Heeyeon: `measure_shift()` and `align_pair()` (whole-pixel shift + crop to the shared area, only when response ≥ 0.1, so 05, 06 and 08 are moved). Grey difference before/after: 05 34.4 → 30.9, 06 48.4 → 46.2, 08 40.6 → 27.1. HSV change map: 08 changed 14.2% → 10.5% and thin lines halved (8.74% → 4.91%); 05 changed 44.9% → 43.9%; 06 no visible change (almost all its vegetation is "lost" anyway because of the brown trees). Change map and bar graph still use the unaligned pairs.
 
 ## Not fixing (limitations for the report)
 
