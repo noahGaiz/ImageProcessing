@@ -74,6 +74,20 @@ Per pair (average of that pair's boxes):
 
 The water thresholds were tuned on these same boxes, so treat that gain as a slightly optimistic estimate. "Both" was checked outside the notebook with `clean_mask(method(img) & ~water_mask(img))`; there's no notebook function for it yet.
 
+### Final table (all improvements, last cell of the notebook)
+
+Each improvement added one at a time. Label masking (`label_mask`) leaves printed labels and borders out; for scoring, masked pixels count as not vegetation, so the 6 label boxes (date text, scale bars, date labels) reach 99% by design. "Land boxes" (the other 56) shows the real effect.
+
+| Pipeline | RGB + edges overall | HSV + edges overall | Land boxes (RGB / HSV) | Label boxes (RGB / HSV) |
+|---|---|---|---|---|
+| Original | 75.7% | 73.4% | 74.0% / 71.2% | 91.2% / 94.0% |
+| + water check | 77.3% | 75.0% | 75.8% / 73.0% | 91.2% / 94.0% |
+| + clean_mask | 76.0% | 74.4% | 74.3% / 72.2% | 91.9% / 94.7% |
+| water check + clean_mask | 77.6% | 76.0% | 76.1% / 74.0% | 91.9% / 94.7% |
+| water check + clean_mask + labels | **78.3%** | **76.5%** | 76.1% / 74.0% | 99.0% / 99.0% |
+
+Label masking doesn't change any land box. Its main effect is on vegetation %: pair 01 before (all rainforest) goes from 88.8% to 99.3% (RGB + edges). Alignment can't be scored here (see Heeyeon's grey difference in the notebook).
+
 ## Before vs after improvements
 
 To show an improvement helped, keep these boxes the same and score both versions:

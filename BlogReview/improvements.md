@@ -59,8 +59,11 @@ Nojus: accuracy write-up. He can use `accuracy/`, check the boxes and add his ow
 
 ### Polina
 
-- [ ] **Mask dates, logos and scale bars** on pairs 01, 02, 04, 05, 07 (a rectangle per image that's left out when measuring). Measure on the pair 01 date-label boxes (now 72–85%).
-- [ ] **Area in km²** for pairs 01 and 02 using their scale bars. This doesn't change accuracy; it makes the result easier to understand.
+- [x] **Mask dates, logos and scale bars** on pairs 01, 02, 04, 05, 07 (Polina). `LABEL_BOXES` + `label_mask(img, pair, half)`: solid labels are left out as a whole rectangle; white/black text printed over the photo (pair 02 dates and scale bars, pair 04 logo, pair 05 copyright, pair 07 "2016") leaves out only the text pixels, so the photo between the letters is kept. `border_mask` also finds plain white/black edges automatically on every pair (01, 02, 03, 07, 08). `vegetation_percent_land` measures vegetation % of the land only. The bar graph now uses it.
+  - Pair 01 before (all rainforest): 88.8% → **99.3%** (RGB + edges), 87.9% → **98.8%** (HSV + edges). The labels and black frame were 12% of the image. Pair 01 change: RGB −13.6 → −15.4, HSV −3.1 → −3.7.
+  - Other pairs change by 0–3.5 points (pairs 04 and 05 the most).
+  - Accuracy: land boxes unchanged (no box worse); label boxes 91–94% → 99% (they count as not vegetation once masked, so this is by design).
+- [-] **Area in km²** for pairs 01 and 02: dropped for time (final accuracy table done instead). Future work in the report.
 
 ### Heeyeon
 

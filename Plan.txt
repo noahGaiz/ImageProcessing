@@ -1,7 +1,7 @@
 Step 0: Setup (this week)
 
 [x] Cut each combined image exactly in half into before.png and after.png
-[ ] Crop or mask titles, dates, logos, scale bars and white gaps (still in the pairs, would count towards vegetation %)
+[x] Mask titles, dates, logos, scale bars and plain borders (left out when measuring vegetation %, label_mask)
 [x] One folder per pair (01 ... 08; 3 images dropped and 1 added on 26 Oct)
 [x] Add .gitignore with .venv/
 [x] Push so everyone has the same images
@@ -32,8 +32,8 @@ Step 4: Compare and measure
 
 Step 5: Check accuracy
 
-[ ] Hand-colour the vegetation on 3 or 4 image pairs (ground truth)
-[ ] Compare to your results, report an accuracy score
+[x] Hand-label vegetation / not vegetation boxes on all 8 pairs (ground truth, accuracy/labels.py)
+[x] Compare to your results, report an accuracy score (final table at the end of the notebook)
 [ ] Use this to pick the best detection method
 
 Step 6: Extras for depth (pick 1 or 2)
